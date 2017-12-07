@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { TodoListStorageService } from './todo-list-storage.service';
 
 @Injectable()
 export class TodoListService {
@@ -11,15 +12,16 @@ export class TodoListService {
     {title: 'deploy app'},
   ];
 
-  constructor() { }
+  constructor(
+    private storage: TodoListStorageService,
+  ) { }
 
   getTodoList() {
-    return this.todoList;
-  }
+    return this.storage.get();
+}
 
-  addItem(item): void {
-    this.todoList.push({title: item});
-    console.log(this.todoList);
+addItem(item) {
+    return this.storage.post(item);
 }
 
 }
