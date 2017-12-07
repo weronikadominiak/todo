@@ -18,10 +18,14 @@ export class TodoListService {
 
   getTodoList() {
     return this.storage.get();
-}
+  }
 
-addItem(item) {
-    return this.storage.post(item);
-}
+  addItem(item) {
+      return this.storage.post(item);
+  }
+
+  removeItem(item) {
+    return this.storage.destroy(item);
+  }
 
 }
