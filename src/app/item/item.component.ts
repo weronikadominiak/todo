@@ -11,7 +11,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
    </p>
   </div>
     <div *ngIf="editClicked">
-    <todo-input (submit)="editItem(todoItem, $event)"></todo-input>
+    <todo-input (submit)="editItem(todoItem, $event); editClicked=false"></todo-input>
     </div>
   `,
   styleUrls: ['./item.component.css']
