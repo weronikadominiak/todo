@@ -1,17 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 import { TodoListService } from '../todo-list.service';
+import { AuthService } from './../auth.service';
 
 @Component({
   selector: 'todo-list-manager',
   template: `
   <div class="todo-app">
   <h1>{{title}}</h1>
+  <p *ngIf="!authService.authenticated">
+  You must log in to access the todo app!
+</p>
+
+<ng-template [ngIf]="authService.authenticated">
   <todo-input (submit)="addItem($event)" class="todo-add"></todo-input>
   <ul>
     <li *ngFor="let item of todoList">
       <todo-item [todoItem]="item" (remove)="removeItem($event)" (edit)="editItem($event)" ></todo-item>
     </li>
   </ul>
+</ng-template>
   </div>
   `,
   styleUrls: ['./list-manager.component.css']
@@ -23,6 +30,7 @@ export class ListManagerComponent implements OnInit {
 
   constructor (
     private todoListService: TodoListService,
+    public authService: AuthService,
   ) { }
 
   ngOnInit() {

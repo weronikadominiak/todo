@@ -20,11 +20,3 @@
     flex-grow: 1;
     padding-left: 11px;
   }
-  
-  .btn-red {
-    background: red;
-  }
-  
-  .btn-red:hover {
-    background: darkred;
-  }
