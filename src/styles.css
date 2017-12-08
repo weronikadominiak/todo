@@ -38,6 +38,14 @@ ol, ul {
   background: lightslategrey;
 }
 
+.btn-blue {
+  background: #0003be;
+}
+
+.btn-blue:hover {
+  background: #030a4b ;
+}
+
 .btn-red {
   background: red;
 }

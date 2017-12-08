@@ -6,13 +6,13 @@ import { AuthService } from './../auth.service';
   selector: 'todo-list-manager',
   template: `
   <div class="todo-app">
-  <h1>{{title}}</h1>
+  <h1>{{ title | uppercase }}</h1>
   <p *ngIf="!authService.authenticated">
   You must log in to access the todo app!
 </p>
 
 <ng-template [ngIf]="authService.authenticated">
-  <todo-input (submit)="addItem($event)" class="todo-add"></todo-input>
+  <todo-input (submit)="addItem($event)"></todo-input>
   <ul>
     <li *ngFor="let item of todoList">
       <todo-item [todoItem]="item" (remove)="removeItem($event)" (edit)="editItem($event)" ></todo-item>
@@ -25,7 +25,7 @@ import { AuthService } from './../auth.service';
 })
 
 export class ListManagerComponent implements OnInit {
-  title = 'todo';
+  title = 'Todo List';
   todoList;
 
   constructor (

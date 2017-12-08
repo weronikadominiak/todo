@@ -9,6 +9,7 @@
   
   .todo-complete {
     text-decoration: line-through;
+    color: #696868;
   }
   
   .todo-checkbox {
@@ -17,6 +18,12 @@
   }
   
   .todo-title {
+    display: flex;
+    flex-wrap: nowrap;
     flex-grow: 1;
     padding-left: 11px;
+  }
+
+  .title {
+    flex-grow: 1;
   }
