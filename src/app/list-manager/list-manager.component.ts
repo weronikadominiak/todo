@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { TodoListService } from '../todo-list.service';
 
 @Component({
@@ -18,7 +18,6 @@ import { TodoListService } from '../todo-list.service';
 })
 
 export class ListManagerComponent implements OnInit {
-  @Output() itemToChange: EventEmitter<any> = new EventEmitter();
   title = 'todo';
   todoList;
 

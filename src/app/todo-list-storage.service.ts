@@ -70,7 +70,6 @@ export class TodoListStorageService {
    * @returns {any[]}
    */
   destroy(item) {
-    console.log(item);
     this.todoList.splice(this.findItemIndex(item), 1);
     return this.update();
   }
