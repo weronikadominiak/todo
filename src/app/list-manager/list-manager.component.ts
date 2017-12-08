@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { TodoListService } from '../todo-list.service';
 
 @Component({
@@ -9,14 +9,16 @@ import { TodoListService } from '../todo-list.service';
   <todo-input (submit)="addItem($event)" class="todo-add"></todo-input>
   <ul>
     <li *ngFor="let item of todoList">
-      <todo-item [todoItem]="item" (remove)="removeItem($event)"></todo-item>
+      <todo-item [todoItem]="item" (remove)="removeItem($event)" (edit)="editItem($event)" ></todo-item>
     </li>
   </ul>
   </div>
   `,
   styleUrls: ['./list-manager.component.css']
 })
+
 export class ListManagerComponent implements OnInit {
+  @Output() itemToChange: EventEmitter<any> = new EventEmitter();
   title = 'todo';
   todoList;
 
@@ -35,4 +37,9 @@ export class ListManagerComponent implements OnInit {
   removeItem(item) {
     this.todoList = this.todoListService.removeItem(item);
   }
+
+  editItem({item, changes}) {
+    this.todoList = this.todoListService.editItem(item, changes);
+  }
+
 }

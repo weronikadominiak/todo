@@ -54,12 +54,23 @@ export class TodoListStorageService {
     return this.todoList.indexOf(item);
   }
 
+   /**
+   * Update an existing item
+   * @param item
+   * @param changes
+   * @returns {any[]}
+   */
+  editItem(item, changes) {
+    Object.assign(this.todoList[this.findItemIndex(item)], {title: changes});
+    return this.update();
+  }
 /**
    * Remove an item from the list
    * @param item
    * @returns {any[]}
    */
   destroy(item) {
+    console.log(item);
     this.todoList.splice(this.findItemIndex(item), 1);
     return this.update();
   }

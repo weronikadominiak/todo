@@ -28,4 +28,7 @@ export class TodoListService {
     return this.storage.destroy(item);
   }
 
+  editItem(item, changes) {
+    return this.storage.editItem(item, changes);
+  }
 }
